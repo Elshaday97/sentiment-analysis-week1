@@ -2,7 +2,7 @@ import re
 import nltk
 
 nltk.download("stopwords")
-ENGLLISH_STOP_WORDS = set(nltk.corpus.stopwords.words("english"))
+ENGLISH_STOP_WORDS = set(nltk.corpus.stopwords.words("english"))
 
 financial_junk = {
     "shares",
@@ -75,3 +75,9 @@ def clean_text(text: str) -> str:
     text = " ".join(words)
 
     return text
+
+
+def extract_domain(publisher):
+    if "@" in str(publisher):
+        return publisher.split("@")[-1].lower()
+    return str(publisher).lower()
