@@ -1,32 +1,41 @@
-# Week 1 - Sentiment Analysis
+# Sentiment Analysis & Quantitative Finance Week 1
 
-Follow the instructions to recreate the project including GitHub Actions workflow.
+A modular Python project analyzing the relationship between financial news sentiment and stock price movements.
 
-### 1. Clone the repository
+## Key Features
+
+- **Single source of truth** — `DataLoader.TICKERS` used everywhere
+- **Professional technical indicators** via chainable `TechnicalIndicators` class
+- **Robust data loading** with error handling and logging
+- **Portfolio optimization** using PyNance (Max Sharpe & Min Variance)
+- **Clean visualizations** and summary tables
+- **Auto-reloading** in notebooks for rapid development
+
+## Setup & Run
 
 ```bash
+# Clone and enter
 git clone git@github.com:Elshaday97/sentiment-analysis-week1.git
 cd sentiment-analysis-week1
-```
 
-### 2. Initialize a Virtual Envrionment
-
-```bash
-# macOS / Linux
-python3 -m venv venv
-source venv/bin/activate
-
-# Windows
+# Create and activate virtual environment
 python -m venv venv
-venv\Scripts\activate
-```
+source venv/bin/activate    # Linux/Mac
+# venv\Scripts\activate     # Windows
 
-### 3. Install Dependencies
-
-```bash
+# Install dependencies
 pip install -r requirements.txt
+
+# Launch Jupyter
+jupyter lab
 ```
 
-### 4. GitHub Actions
+## Tech Stack
 
-## Usage
+- Python 3.10+
+- Pandas, NumPy
+- TA-Lib (technical indicators)
+- PyNance (portfolio optimization)
+- Matplotlib, Seaborn
+- Scikit-learn, NLTK
+- Jupyter Lab
