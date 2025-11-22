@@ -2,6 +2,16 @@
 
 A modular Python project analyzing the relationship between financial news sentiment and stock price movements.
 
+## Current Progress (Nov 22, 2025)
+
+| Task                              | Status      | Details                                                                 |
+| --------------------------------- | ----------- | ----------------------------------------------------------------------- |
+| Task 1 — News EDA                 | Completed   | Publisher analysis, domain extraction, time trends, headline stats      |
+| Task 2 — Quantitative Analysis    | Completed   | TA-Lib indicators (SMA, EMA, RSI, MACD), PyNance portfolio optimization |
+| Task 3 — News ↔ Stock Correlation | In Progress | Date alignment & sentiment prep done; correlation in progress           |
+| Modular Architecture              | Completed   | Full `src/` package with classes, docstrings, and clean notebooks       |
+| Git Workflow                      | Completed   | Branch per task, daily commits, PRs merged                              |
+
 ## Key Features
 
 - **Single source of truth** — `DataLoader.TICKERS` used everywhere
@@ -10,6 +20,20 @@ A modular Python project analyzing the relationship between financial news senti
 - **Portfolio optimization** using PyNance (Max Sharpe & Min Variance)
 - **Clean visualizations** and summary tables
 - **Auto-reloading** in notebooks for rapid development
+
+## Project Structure
+
+```bash
+
+├── src/                  # Reusable, importable package
+│   ├── data/             # DataLoader class
+│   ├── indicators/       # TechnicalIndicators class (encapsulated TA-Lib)
+├── notebooks/            # Clean, high-level analysis & visualization
+├── scripts/              # Reusable utility functions
+├── data/                 # Data processing
+├── requirements.txt
+└── README.md
+```
 
 ## Setup & Run
 
