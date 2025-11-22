@@ -10,3 +10,6 @@ All reusable logic is being progressively migrated into the `src/` package for b
 ### `text_cleaning.py`
 
 **Purpose:** Preprocess financial news headlines by removing noise and boilerplate common in analyst articles.
+
+- clean_text(): Removes URLs, numbers, stop words + financial noise
+- extract_domain(): Handles email-style publishers
