@@ -12,6 +12,15 @@ A modular Python project analyzing the relationship between financial news senti
 | Modular Architecture              | Completed   | Full `src/` package with classes, docstrings, and clean notebooks       |
 | Git Workflow                      | Completed   | Branch per task, daily commits, PRs merged                              |
 
+### Key Interim Findings (So Far)
+
+| Area                   | Discovery                                                                        |
+| ---------------------- | -------------------------------------------------------------------------------- |
+| **News Volume**        | Paul Quintaro has published the most articles                                    |
+| **Publication Spikes** | Clear spikes on early mornings, Thursday is when most aricles are published      |
+| **Headline Noise**     | Headlines filled with boilerplate that had to be removed along with common words |
+| **Technical Signals**  | NVDA consistently shows **RSI > 70** (overbought) + strong MACD bullish cross    |
+
 ## Key Features
 
 - **Single source of truth** — `DataLoader.TICKERS` used everywhere
