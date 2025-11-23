@@ -4,7 +4,7 @@ from typing import List
 
 
 # Methods here are specific to the assignment requirements and not general-purpose
-class DataLoader:
+class DataManager:
     TICKERS: List[str] = ["AAPL", "AMZN", "GOOG", "META", "MSFT", "NVDA"]
 
     def __init__(self, data_dir="../data"):
@@ -59,3 +59,18 @@ class DataLoader:
             print("All stock data loaded successfully.")
 
         return results
+
+    def save_processed_data_to_csv(
+        self,
+        df: pd.DataFrame,
+        fileName: str,
+        keep_index=False,
+    ):
+        try:
+            path = self.data_dir / "processed_data" / f"{fileName}.csv"
+            if "Unnamed: 0" in df.columns:
+                df.drop(columns=["Unnamed: 0"], inplace=True)
+            df.to_csv(path, index=keep_index)
+            print(f"Successfully saved file to {path}")
+        except Exception as e:
+            print(f"Error while saving data for {path}: {e}")
