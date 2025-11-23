@@ -10,8 +10,11 @@ class DataManager:
     def __init__(self, data_dir="../data"):
         self.data_dir = Path.Path(data_dir)
 
-    def load_news_data(self) -> pd.DataFrame:
-        news_file = self.data_dir / "raw_analyst_ratings.csv"
+    def load_news_data(self, load_processed: bool = False) -> pd.DataFrame:
+        if load_processed:
+            news_file = self.data_dir / "processed_data" / "processed_news.csv"
+        else:
+            news_file = self.data_dir / "raw_analyst_ratings.csv"
 
         if not news_file.exists():
             raise FileNotFoundError(f"News data file not found: {news_file}")
@@ -25,9 +28,12 @@ class DataManager:
             print(f"Error loading news data: {e}")
             raise Exception(f"Failed to load news data: {e}")
 
-    def load_stock(self, ticker: str) -> pd.DataFrame:
+    def load_stock(self, ticker: str, load_processed: bool = False) -> pd.DataFrame:
         ticker = ticker.upper()
-        stock_file = self.data_dir / "finance_data" / f"{ticker}.csv"
+        if load_processed:
+            stock_file = self.data_dir / "processed_data" / f"processed_{ticker}.csv"
+        else:
+            stock_file = self.data_dir / "finance_data" / f"{ticker}.csv"
 
         if not stock_file.exists():
             raise FileNotFoundError(
@@ -35,20 +41,24 @@ class DataManager:
             )
         try:
             print(f"Loading stock data for {ticker} from {stock_file}")
-            df = pd.read_csv(stock_file)
+            if load_processed:
+                df = pd.read_csv(stock_file, index_col="Date")
+            else:
+                df = pd.read_csv(stock_file)
+
             print(f"Stock data for {ticker} loaded successfully.")
             return df
         except Exception as e:
             print(f"Error loading stock data for {ticker}: {e}")
             raise Exception(f"Failed to load stock data for {ticker}: {e}")
 
-    def load_all_stocks(self) -> pd.DataFrame:
+    def load_all_stocks(self, load_processed: bool = False) -> dict:
         results = {}
         failed = []
 
         for ticker in self.TICKERS:
             try:
-                results[ticker] = self.load_stock(ticker)
+                results[ticker] = self.load_stock(ticker, load_processed)
             except Exception as e:
                 failed.append(ticker)
                 print(f"Failed to load data for {ticker}: {e}")
