@@ -3,8 +3,30 @@ import pathlib as Path
 from typing import List
 
 
-# Methods here are specific to the assignment requirements and not general-purpose
 class DataManager:
+    """
+    A class to manage loading, saving, and processing of financial news and stock data
+    for the Week 1 assignment. This is tailored to the FNSPID dataset structure and
+    assignment requirements.
+
+    Attributes:
+        TICKERS (List[str]): Default list of stock tickers to load.
+        data_dir (Path): Base directory for raw and processed data.
+
+    Methods:
+        load_news_data(load_processed=False) -> pd.DataFrame:
+            Loads news data either from raw or processed CSV files.
+
+        load_stock(ticker, load_processed=False) -> pd.DataFrame:
+            Loads individual stock data for a given ticker.
+
+        load_all_stocks(load_processed=False) -> dict:
+            Loads stock data for all tickers in TICKERS.
+
+        save_processed_data_to_csv(df, fileName, keep_index=False):
+            Saves a DataFrame to the processed_data folder as a CSV file.
+    """
+
     TICKERS: List[str] = ["AAPL", "AMZN", "GOOG", "META", "MSFT", "NVDA"]
 
     def __init__(self, data_dir="../data"):
