@@ -3,6 +3,22 @@ import talib
 
 
 class TechnicalIndicators:
+    """
+    A class for computing common technical indicators on stock price data using TA-Lib.
+
+    Attributes:
+        df (pd.DataFrame): DataFrame containing stock data with a 'Close' column.
+        closing_price (pd.Series): Series containing closing prices, used for indicator calculations.
+
+    Methods:
+        add_sma(): Adds a 20-period Simple Moving Average (SMA) column to the DataFrame.
+        add_ema(): Adds a 20-period Exponential Moving Average (EMA) column to the DataFrame.
+        add_rsi(): Adds a 14-period Relative Strength Index (RSI) column to the DataFrame.
+        add_macd(fast=12, slow=26, signal=9): Adds MACD, MACD Signal, and MACD Histogram columns.
+        add_all_indicators(): Computes and adds all indicators (SMA, EMA, RSI, MACD).
+        get_data() -> pd.DataFrame: Returns the DataFrame with added technical indicators.
+    """
+
     def __init__(self, df: pd.DataFrame):
         if df.empty or "Close" not in df.columns:
             raise ValueError("Please use a non empty dataframe with Close column")

@@ -1,3 +1,3 @@
-from .loader import DataLoader
+from .manager import DataManager
 
-__all__ = ["DataLoader"]
+__all__ = ["DataManager"]

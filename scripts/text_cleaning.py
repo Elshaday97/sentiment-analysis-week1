@@ -62,8 +62,30 @@ financial_junk = {
 }
 stop_words = ENGLISH_STOP_WORDS.union(financial_junk)
 
+"""
+
+
+"""
+
 
 def clean_text(text: str) -> str:
+    """
+    Cleans a given text string by performing the following steps:
+
+    1. Converts the text to lowercase.
+    2. Removes URLs.
+    3. Removes all digits.
+    4. Replaces non-alphabetic characters with spaces.
+    5. Removes extra whitespace.
+    6. Removes common English stopwords and a set of financial-specific "junk" words
+
+    Args:
+        text (str): The input text string to be cleaned.
+
+    Returns:
+        str: The cleaned text string, suitable for NLP tasks such as
+             sentiment analysis or keyword extraction.
+    """
     text = str(text).lower()
     text = re.sub(r"http\S+", "", text)
     text = re.sub(r"\d+", "", text)
@@ -78,6 +100,17 @@ def clean_text(text: str) -> str:
 
 
 def extract_domain(publisher):
+    """
+    Extracts the domain part from a publisher string. If the publisher contains
+    an email address, returns the part after the '@' symbol; otherwise, returns
+    the lowercase version of the publisher string.
+
+    Args:
+        publisher (str): The publisher string
+
+    Returns:
+        str: The extracted domain
+    """
     if "@" in str(publisher):
         return publisher.split("@")[-1].lower()
     return str(publisher).lower()
