@@ -21,7 +21,12 @@ class DataManager:
 
         try:
             print(f"Loading news data from {news_file}")
-            df = pd.read_csv(news_file)
+            if load_processed:
+                df = pd.read_csv(
+                    news_file, index_col="date_clean", parse_dates=["date_clean"]
+                )
+            else:
+                df = pd.read_csv(news_file)
             print("News data loaded successfully.")
             return df
         except Exception as e:
@@ -42,7 +47,7 @@ class DataManager:
         try:
             print(f"Loading stock data for {ticker} from {stock_file}")
             if load_processed:
-                df = pd.read_csv(stock_file, index_col="Date")
+                df = pd.read_csv(stock_file, index_col="Date", parse_dates=["Date"])
             else:
                 df = pd.read_csv(stock_file)
 
