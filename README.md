@@ -8,7 +8,7 @@ A modular Python project analyzing the relationship between financial news senti
 | --------------------------------- | ----------- | ----------------------------------------------------------------------- |
 | Task 1 — News EDA                 | Completed   | Publisher analysis, domain extraction, time trends, headline stats      |
 | Task 2 — Quantitative Analysis    | Completed   | TA-Lib indicators (SMA, EMA, RSI, MACD), PyNance portfolio optimization |
-| Task 3 — News ↔ Stock Correlation | In Progress | Date alignment & sentiment prep done; correlation in progress           |
+| Task 3 — News ↔ Stock Correlation | Completed   | Date alignment & sentiment prep done; correlation in progress           |
 | Modular Architecture              | Completed   | Full `src/` package with classes, docstrings, and clean notebooks       |
 | Git Workflow                      | Completed   | Branch per task, daily commits, PRs merged                              |
 
@@ -20,6 +20,7 @@ A modular Python project analyzing the relationship between financial news senti
 | **Publication Spikes** | Clear spikes on early mornings, Thursday is when most aricles are published      |
 | **Headline Noise**     | Headlines filled with boilerplate that had to be removed along with common words |
 | **Technical Signals**  | NVDA consistently shows **RSI > 70** (overbought) + strong MACD bullish cross    |
+| **Correlation Analysis**  | All tickers show weak relation among average sentiment and return price       |
 
 ## Key Features
 
